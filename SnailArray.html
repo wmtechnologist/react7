@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        var snailArray = [];
+  
+  snail = function(array){
+  
+    while(array !== []){
+      for(var i = 0; i < array[0].length; i++){
+         // first row get added "as is"
+         if(i === 0){ 
+            while(array[i].length > 0){
+                snailArray.push(array[i].pop());
+            }
+          } else {
+              //subsequent rows, pop last item
+                snailArray.push(array[i].pop());
+          }
+        }
+      }
+      
+      snail(matrix180(array.splice(0,1)));
+    }
+    return snailArray;
+  }
+  
+  matrix180 = function(array){
+      var rotatedArray = [];
+      var len = array[0].length;
+      
+      for(var row = 0; row < len; row++){
+        for(var col = 0; col < len; col++){
+          rotatedArray[row][col] == array[len-row][len-col];
+        }
+      }
+      
+      return rotatedArray;
+  }
+    </script>
+
+</body>
+</html>
